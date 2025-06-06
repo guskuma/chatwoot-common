@@ -2,6 +2,8 @@ import { DateLike } from './common.types';
 export interface Account {
     id: string;
     name: string;
+    displayName: string;
+    email: string;
     description?: string;
     openaiKey?: string;
     createdAt: DateLike;
@@ -16,10 +18,13 @@ export interface Owner {
 }
 export interface CreateAccountData {
     name: string;
+    displayName: string;
+    email: string;
     description?: string;
 }
 export interface UpdateAccountData {
     name?: string;
+    displayName?: string;
     description?: string;
     openaiKey?: string;
 }

@@ -3,6 +3,8 @@ import { DateLike } from './common.types';
 export interface Account {
   id: string;
   name: string;
+  displayName: string; // Nome de exibição da conta
+  email: string; // Email da conta (não editável após criação)
   description?: string;
   openaiKey?: string; // Chave OpenAI específica desta conta
   createdAt: DateLike;
@@ -21,12 +23,16 @@ export interface Owner {
 
 export interface CreateAccountData {
   name: string;
+  displayName: string; // Obrigatório na criação
+  email: string; // Obrigatório na criação
   description?: string;
   // owners array é geralmente gerenciado separadamente ou pelo usuário logado inicialmente
 }
 
 export interface UpdateAccountData {
   name?: string;
+  displayName?: string; // Pode ser editado
+  // email não está aqui pois não pode ser editado
   description?: string;
   openaiKey?: string; // Permitir atualização da chave OpenAI
   // owners?: string[]; // A atualização de owners pode ser uma operação separada
