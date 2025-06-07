@@ -5,6 +5,7 @@ export interface Inbox {
   accountId: string;
   name: string;
   description?: string;
+  phoneNumber?: string; // Número de telefone no formato +55 41 99999-9999
   initialPrompt: string;
   active?: boolean; // No backend, 'active' é boolean, mas no admin pode ser opcional ao buscar/atualizar parcialmente.
   processGroupMessages: boolean; // Indica se o agente deve processar mensagens de grupos do WhatsApp
@@ -46,6 +47,7 @@ export interface CreateInboxData {
   accountId: string; // Necessário para saber onde criar o inbox
   name: string;
   description?: string;
+  phoneNumber: string; // Número de telefone no formato +55 41 99999-9999 (OBRIGATÓRIO)
   initialPrompt: string;
   active: boolean; // Geralmente, ao criar, definimos explicitamente se está ativo
   processGroupMessages: boolean; // Indica se deve processar mensagens de grupos
@@ -55,6 +57,7 @@ export interface CreateInboxData {
 export interface UpdateInboxData {
   name?: string;
   description?: string;
+  // phoneNumber não está incluído - não pode ser editado após criação
   initialPrompt?: string;
   active?: boolean;
   processGroupMessages?: boolean; // Permite atualizar a configuração de grupos

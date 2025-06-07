@@ -4,6 +4,7 @@ export interface Inbox {
     accountId: string;
     name: string;
     description?: string;
+    phoneNumber?: string;
     initialPrompt: string;
     active?: boolean;
     processGroupMessages: boolean;
@@ -34,6 +35,7 @@ export interface CreateInboxData {
     accountId: string;
     name: string;
     description?: string;
+    phoneNumber: string;
     initialPrompt: string;
     active: boolean;
     processGroupMessages: boolean;
