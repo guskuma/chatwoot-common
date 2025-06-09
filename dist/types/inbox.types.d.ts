@@ -41,6 +41,8 @@ export interface CreateInboxData {
     initialPrompt: string;
     active: boolean;
     processGroupMessages: boolean;
+    agentName: string;
+    agentAccessToken: string;
     functions?: string[];
 }
 export interface UpdateInboxData {
@@ -49,6 +51,8 @@ export interface UpdateInboxData {
     initialPrompt?: string;
     active?: boolean;
     processGroupMessages?: boolean;
+    agentName?: string;
+    agentAccessToken?: string;
     functions?: string[];
 }
 export interface InboxFunctionsResponse {
