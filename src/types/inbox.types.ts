@@ -10,6 +10,8 @@ export interface Inbox {
   active?: boolean; // No backend, 'active' é boolean, mas no admin pode ser opcional ao buscar/atualizar parcialmente.
   processGroupMessages: boolean; // Indica se o agente deve processar mensagens de grupos do WhatsApp
   functions?: string[]; // Array de nomes/IDs das funções configuradas
+  agentName: string;
+  agentAccessToken: string;
   createdAt: DateLike;
   updatedAt: DateLike;
 }
@@ -51,6 +53,8 @@ export interface CreateInboxData {
   initialPrompt: string;
   active: boolean; // Geralmente, ao criar, definimos explicitamente se está ativo
   processGroupMessages: boolean; // Indica se deve processar mensagens de grupos
+  agentName: string;
+  agentAccessToken: string;
   functions?: string[];
 }
 
@@ -61,6 +65,8 @@ export interface UpdateInboxData {
   initialPrompt?: string;
   active?: boolean;
   processGroupMessages?: boolean; // Permite atualizar a configuração de grupos
+  agentName?: string;
+  agentAccessToken?: string;
   functions?: string[]; // Permite atualizar a lista de funções
 }
 

@@ -9,6 +9,8 @@ export interface Inbox {
     active?: boolean;
     processGroupMessages: boolean;
     functions?: string[];
+    agentName: string;
+    agentAccessToken: string;
     createdAt: DateLike;
     updatedAt: DateLike;
 }

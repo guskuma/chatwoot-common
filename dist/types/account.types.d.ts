@@ -6,6 +6,10 @@ export interface Account {
     email: string;
     description?: string;
     openaiKey?: string;
+    chatwootUrl: string;
+    chatwootSuperAdminAccesToken: string;
+    unoapiUrl: string;
+    unoapiAuthToken: string;
     createdAt: DateLike;
     updatedAt: DateLike;
     owners: string[];
