@@ -1,5 +1,16 @@
 import { DateLike } from './common.types';
 
+// Model information for GPT models
+export interface ModelInfo {
+  id: string;
+  name: string;
+  description: string;
+  contextWindow: string;
+  speed: 'fast' | 'medium' | 'slow';
+  reasoning: 'basic' | 'advanced' | 'expert';
+  category: 'flagship' | 'mini' | 'reasoning' | 'turbo';
+}
+
 export interface Inbox {
   id: string;
   accountId: string;
