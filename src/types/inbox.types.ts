@@ -12,6 +12,7 @@ export interface Inbox {
   functions?: string[]; // Array de nomes/IDs das funções configuradas
   agentName: string;
   agentAccessToken: string;
+  model?: string; // Modelo GPT a ser utilizado (gpt-4o-mini, gpt-4o, etc.)
   createdAt: DateLike;
   updatedAt: DateLike;
 }
@@ -56,6 +57,7 @@ export interface CreateInboxData {
   agentName: string;
   agentAccessToken: string;
   functions?: string[];
+  model?: string; // Modelo GPT a ser utilizado
 }
 
 export interface UpdateInboxData {
@@ -68,6 +70,7 @@ export interface UpdateInboxData {
   agentName?: string;
   agentAccessToken?: string;
   functions?: string[]; // Permite atualizar a lista de funções
+  model?: string; // Permite atualizar o modelo GPT utilizado
 }
 
 // Resposta da API ou hook para buscar funções de um inbox (como estava no admin)

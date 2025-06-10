@@ -11,6 +11,7 @@ export interface Inbox {
     functions?: string[];
     agentName: string;
     agentAccessToken: string;
+    model?: string;
     createdAt: DateLike;
     updatedAt: DateLike;
 }
@@ -44,6 +45,7 @@ export interface CreateInboxData {
     agentName: string;
     agentAccessToken: string;
     functions?: string[];
+    model?: string;
 }
 export interface UpdateInboxData {
     name?: string;
@@ -54,6 +56,7 @@ export interface UpdateInboxData {
     agentName?: string;
     agentAccessToken?: string;
     functions?: string[];
+    model?: string;
 }
 export interface InboxFunctionsResponse {
     configured: FunctionTool[];
