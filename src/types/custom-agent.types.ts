@@ -45,6 +45,7 @@ export interface CustomAgent {
   // Configurações para o comportamento INTERNO deste CustomAgent
   enabled: boolean;
   model: string;            // Modelo LLM que este agente usa internamente
+  reasoning?: boolean;      // Indica se o modelo selecionado utiliza capacidades de reasoning
   developerMessage: string; // Prompt do sistema para o LLM interno deste agente
   temperature: number;
 

@@ -24,6 +24,7 @@ export interface Inbox {
   agentName: string;
   agentAccessToken: string;
   model?: string; // Modelo GPT a ser utilizado (gpt-4o-mini, gpt-4o, etc.)
+  reasoning?: boolean; // Indica se o modelo selecionado utiliza capacidades de reasoning
   createdAt: DateLike;
   updatedAt: DateLike;
 }
@@ -69,6 +70,7 @@ export interface CreateInboxData {
   agentAccessToken: string;
   functions?: string[];
   model?: string; // Modelo GPT a ser utilizado
+  reasoning?: boolean; // Indica se o modelo selecionado utiliza capacidades de reasoning
 }
 
 export interface UpdateInboxData {
@@ -82,6 +84,7 @@ export interface UpdateInboxData {
   agentAccessToken?: string;
   functions?: string[]; // Permite atualizar a lista de funções
   model?: string; // Permite atualizar o modelo GPT utilizado
+  reasoning?: boolean; // Permite atualizar a configuração de reasoning
 }
 
 // Resposta da API ou hook para buscar funções de um inbox (como estava no admin)
