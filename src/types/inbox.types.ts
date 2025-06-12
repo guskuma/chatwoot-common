@@ -1,4 +1,5 @@
 import { DateLike } from './common.types';
+import { FunctionTool } from 'openai/resources/responses/responses';
 
 // Model information for GPT models
 export interface ModelInfo {
@@ -29,34 +30,7 @@ export interface Inbox {
   updatedAt: DateLike;
 }
 
-// Tipos relacionados a "Function Tools" que são usados na UI do admin
-// Podem ou não ser armazenados diretamente no documento Inbox no Firestore,
-// ou podem ser parte de uma coleção separada ou lógica de UI.
-// Por agora, vamos mantê-los aqui para referência, mas podem ser movidos para o admin se forem específicos da UI.
-export interface FunctionToolParameterProperty {
-  type: string;
-  description?: string;
-  enum?: string[];
-}
-
-export interface FunctionToolParameters {
-  type: 'object';
-  properties: Record<string, FunctionToolParameterProperty>;
-  required?: string[];
-  additionalProperties?: boolean; 
-}
-
-export interface FunctionTool {
-  type: 'function';
-  function: {
-    name: string;
-    description: string;
-    parameters: FunctionToolParameters;
-    strict?: boolean;
-  };
-}
-
-// Função com displayName e categoria para uso compartilhado (backend, admin, etc)
+// Extensão da FunctionTool da OpenAI para incluir displayName e category
 export interface FunctionToolWithDisplayName extends FunctionTool {
   displayName: string;
   category?: string;
