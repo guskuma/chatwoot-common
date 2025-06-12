@@ -52,7 +52,7 @@ export interface FunctionTool {
     name: string;
     description: string;
     parameters: FunctionToolParameters;
-    // strict?: boolean; // Este campo estava no admin, mas seu propósito não está claro no contexto do backend
+    strict?: boolean;
   };
 }
 
