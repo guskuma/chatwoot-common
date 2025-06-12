@@ -1,4 +1,5 @@
 import { DateLike } from './common.types';
+import { FunctionTool } from 'openai/resources/responses/responses';
 export interface ModelInfo {
     id: string;
     name: string;
@@ -25,24 +26,9 @@ export interface Inbox {
     createdAt: DateLike;
     updatedAt: DateLike;
 }
-export interface FunctionToolParameterProperty {
-    type: string;
-    description?: string;
-    enum?: string[];
-}
-export interface FunctionToolParameters {
-    type: 'object';
-    properties: Record<string, FunctionToolParameterProperty>;
-    required?: string[];
-    additionalProperties?: boolean;
-}
-export interface FunctionTool {
-    type: 'function';
-    function: {
-        name: string;
-        description: string;
-        parameters: FunctionToolParameters;
-    };
+export interface FunctionToolWithDisplayName extends FunctionTool {
+    displayName: string;
+    category?: string;
 }
 export interface CreateInboxData {
     accountId: string;
