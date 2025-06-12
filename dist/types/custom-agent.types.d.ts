@@ -40,7 +40,7 @@ export interface CustomAgent {
     toolDefinition?: CommonCustomAgentToolDefinition;
     enabled: boolean;
     model: string;
-    reasoning?: boolean;
+    reasoning: 'low' | 'medium' | 'high';
     developerMessage: string;
     temperature: number;
     toolsConfig?: CommonCustomAgentToolConfigItem[];

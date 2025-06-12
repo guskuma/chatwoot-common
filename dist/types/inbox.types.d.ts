@@ -22,7 +22,7 @@ export interface Inbox {
     agentName: string;
     agentAccessToken: string;
     model?: string;
-    reasoning?: boolean;
+    reasoning: 'low' | 'medium' | 'high';
     createdAt: DateLike;
     updatedAt: DateLike;
 }
@@ -42,7 +42,7 @@ export interface CreateInboxData {
     agentAccessToken: string;
     functions?: string[];
     model?: string;
-    reasoning?: boolean;
+    reasoning?: 'low' | 'medium' | 'high';
 }
 export interface UpdateInboxData {
     name?: string;
@@ -54,7 +54,7 @@ export interface UpdateInboxData {
     agentAccessToken?: string;
     functions?: string[];
     model?: string;
-    reasoning?: boolean;
+    reasoning?: 'low' | 'medium' | 'high';
 }
 export interface InboxFunctionsResponse {
     configured: FunctionTool[];
