@@ -56,6 +56,11 @@ export interface FunctionTool {
   };
 }
 
+// Função com displayName e categoria para uso compartilhado (backend, admin, etc)
+export interface FunctionToolWithDisplayName extends FunctionTool {
+  displayName: string;
+  category?: string;
+}
 
 // Data Transfer Objects (DTOs)
 export interface CreateInboxData {
