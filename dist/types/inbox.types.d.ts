@@ -26,7 +26,7 @@ export interface Inbox {
     createdAt: DateLike;
     updatedAt: DateLike;
 }
-export interface FunctionToolWithDisplayName extends FunctionTool {
+export interface FunctionToolDisplay extends FunctionTool {
     displayName: string;
     category?: string;
 }

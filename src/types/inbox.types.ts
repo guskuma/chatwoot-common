@@ -31,7 +31,7 @@ export interface Inbox {
 }
 
 // Extensão da FunctionTool da OpenAI para incluir displayName e category
-export interface FunctionToolWithDisplayName extends FunctionTool {
+export interface FunctionToolDisplay extends FunctionTool {
   displayName: string;
   category?: string;
 }
