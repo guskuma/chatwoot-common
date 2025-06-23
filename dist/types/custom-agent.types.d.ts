@@ -18,19 +18,25 @@ export interface CommonFunctionParameters {
 export interface CommonCustomAgentToolDefinition {
     parameters: CommonFunctionParameters;
 }
+export interface CommonToolConfigurableParameters {
+    [parameterName: string]: any;
+}
 export type CommonCustomAgentToolConfigItem = {
     type: 'custom_agent';
     agentId: string;
     name?: string;
+    parameters?: CommonToolConfigurableParameters;
 } | {
     type: 'predefined_function';
     functionName: string;
     name?: string;
+    parameters?: CommonToolConfigurableParameters;
 } | {
     type: 'mcp';
     mcpServerId: string;
     mcpToolName: string;
     name?: string;
+    parameters?: CommonToolConfigurableParameters;
 };
 export interface CustomAgent {
     id: string;

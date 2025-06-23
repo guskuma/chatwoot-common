@@ -1,5 +1,8 @@
 import { DateLike } from './common.types';
 import { FunctionTool } from 'openai/resources/responses/responses';
+export interface ConfigurableParameters {
+    [parameterName: string]: any;
+}
 export interface ModelInfo {
     id: string;
     name: string;
@@ -8,6 +11,14 @@ export interface ModelInfo {
     speed: 'fast' | 'medium' | 'slow';
     reasoning: 'basic' | 'advanced' | 'expert';
     category: 'flagship' | 'mini' | 'reasoning' | 'turbo';
+}
+export interface ConfiguredFunction {
+    name: string;
+    type: 'predefined' | 'custom' | 'mcp';
+    parameters?: ConfigurableParameters;
+    agentId?: string;
+    mcpServerId?: string;
+    mcpToolName?: string;
 }
 export interface Inbox {
     id: string;
@@ -19,6 +30,7 @@ export interface Inbox {
     active?: boolean;
     processGroupMessages: boolean;
     functions?: string[];
+    configuredFunctions?: ConfiguredFunction[];
     agentName: string;
     agentAccessToken: string;
     model?: string;
@@ -41,6 +53,7 @@ export interface CreateInboxData {
     agentName: string;
     agentAccessToken: string;
     functions?: string[];
+    configuredFunctions?: ConfiguredFunction[];
     model?: string;
     reasoning?: 'low' | 'medium' | 'high';
 }
@@ -53,6 +66,7 @@ export interface UpdateInboxData {
     agentName?: string;
     agentAccessToken?: string;
     functions?: string[];
+    configuredFunctions?: ConfiguredFunction[];
     model?: string;
     reasoning?: 'low' | 'medium' | 'high';
 }

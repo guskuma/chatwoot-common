@@ -25,12 +25,33 @@ export interface CommonCustomAgentToolDefinition {
   parameters: CommonFunctionParameters;
 }
 
+// Nova interface para parâmetros configuráveis de funções/tools
+export interface CommonToolConfigurableParameters {
+  [parameterName: string]: any; // Valores configurados para os parâmetros
+}
+
 // Tipo para a configuração das ferramentas que um CustomAgent pode USAR.
 // Esta é a estrutura mais rica do frontend.
 export type CommonCustomAgentToolConfigItem =
-  | { type: 'custom_agent'; agentId: string; name?: string; /* Para UI */ }
-  | { type: 'predefined_function'; functionName: string; name?: string; /* Para UI */ }
-  | { type: 'mcp'; mcpServerId: string; mcpToolName: string; name?: string; /* Para UI */ };
+  | { 
+      type: 'custom_agent'; 
+      agentId: string; 
+      name?: string; /* Para UI */
+      parameters?: CommonToolConfigurableParameters; /* Parâmetros configuráveis */
+    }
+  | { 
+      type: 'predefined_function'; 
+      functionName: string; 
+      name?: string; /* Para UI */
+      parameters?: CommonToolConfigurableParameters; /* Parâmetros configuráveis */
+    }
+  | { 
+      type: 'mcp'; 
+      mcpServerId: string; 
+      mcpToolName: string; 
+      name?: string; /* Para UI */
+      parameters?: CommonToolConfigurableParameters; /* Parâmetros configuráveis */
+    };
 
 // A interface CustomAgent consolidada
 export interface CustomAgent {

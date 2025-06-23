@@ -1,6 +1,11 @@
 import { DateLike } from './common.types';
 import { FunctionTool } from 'openai/resources/responses/responses';
 
+// Nova interface para parâmetros configuráveis
+export interface ConfigurableParameters {
+  [parameterName: string]: any;
+}
+
 // Model information for GPT models
 export interface ModelInfo {
   id: string;
@@ -12,6 +17,17 @@ export interface ModelInfo {
   category: 'flagship' | 'mini' | 'reasoning' | 'turbo';
 }
 
+// Nova interface para função configurada (simplificada)
+export interface ConfiguredFunction {
+  name: string;
+  type: 'predefined' | 'custom' | 'mcp';
+  parameters?: ConfigurableParameters; // Parâmetros com valores configurados
+  // Campos específicos para cada tipo
+  agentId?: string; // Para type === 'custom'
+  mcpServerId?: string; // Para type === 'mcp'
+  mcpToolName?: string; // Para type === 'mcp'
+}
+
 export interface Inbox {
   id: string;
   accountId: string;
@@ -21,7 +37,8 @@ export interface Inbox {
   initialPrompt: string;
   active?: boolean; // No backend, 'active' é boolean, mas no admin pode ser opcional ao buscar/atualizar parcialmente.
   processGroupMessages: boolean; // Indica se o agente deve processar mensagens de grupos do WhatsApp
-  functions?: string[]; // Array de nomes/IDs das funções configuradas
+  functions?: string[]; // Array de nomes/IDs das funções configuradas - DEPRECATED, usar configuredFunctions
+  configuredFunctions?: ConfiguredFunction[]; // Nova estrutura para funções configuradas
   agentName: string;
   agentAccessToken: string;
   model?: string; // Modelo GPT a ser utilizado (gpt-4o-mini, gpt-4o, etc.)
@@ -47,7 +64,8 @@ export interface CreateInboxData {
   processGroupMessages: boolean; // Indica se deve processar mensagens de grupos
   agentName: string;
   agentAccessToken: string;
-  functions?: string[];
+  functions?: string[]; // DEPRECATED
+  configuredFunctions?: ConfiguredFunction[]; // Nova estrutura
   model?: string; // Modelo GPT a ser utilizado
   reasoning?: 'low' | 'medium' | 'high';
 }
@@ -61,7 +79,8 @@ export interface UpdateInboxData {
   processGroupMessages?: boolean; // Permite atualizar a configuração de grupos
   agentName?: string;
   agentAccessToken?: string;
-  functions?: string[]; // Permite atualizar a lista de funções
+  functions?: string[]; // Permite atualizar a lista de funções - DEPRECATED
+  configuredFunctions?: ConfiguredFunction[]; // Nova estrutura
   model?: string; // Permite atualizar o modelo GPT utilizado
   reasoning?: 'low' | 'medium' | 'high';
 }
