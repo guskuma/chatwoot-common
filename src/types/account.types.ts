@@ -1,7 +1,7 @@
 import { DateLike } from './common.types';
 
 export interface Account {
-  id: string;
+  id: string; // ID da account (mesmo ID usado no Chatwoot)
   name: string;
   displayName: string; // Nome de exibição da conta
   email: string; // Email da conta (não editável após criação)

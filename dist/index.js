@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // This file will export all common types and interfaces. 
 __exportStar(require("./types/common.types"), exports);
 __exportStar(require("./types/account.types"), exports);
+__exportStar(require("./types/chatwoot-platform.types"), exports);
 __exportStar(require("./types/inbox.types"), exports);
 __exportStar(require("./types/user.types"), exports);
 __exportStar(require("./types/conversation.types"), exports);
