@@ -6,6 +6,7 @@ export interface Account {
     email: string;
     description?: string;
     openaiKey?: string;
+    pwd?: string;
     createdAt: DateLike;
     updatedAt: DateLike;
     owners: string[];

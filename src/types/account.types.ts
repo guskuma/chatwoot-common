@@ -7,6 +7,7 @@ export interface Account {
   email: string; // Email da conta (não editável após criação)
   description?: string;
   openaiKey?: string; // Chave OpenAI específica desta conta
+  pwd?: string; // Senha do usuário administrador
   createdAt: DateLike;
   updatedAt: DateLike;
   owners: string[]; // Array de UIDs do Firebase Authentication ou IDs de usuário
