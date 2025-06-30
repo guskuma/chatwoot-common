@@ -28,6 +28,7 @@ export interface UpdateAccountData {
     displayName?: string;
     description?: string;
     openaiKey?: string;
+    id?: string;
 }
 export interface AddOwnerData {
     email: string;

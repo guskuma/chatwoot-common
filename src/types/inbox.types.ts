@@ -83,6 +83,7 @@ export interface UpdateInboxData {
   configuredFunctions?: ConfiguredFunction[]; // Nova estrutura
   model?: string; // Permite atualizar o modelo GPT utilizado
   reasoning?: 'low' | 'medium' | 'high';
+  id?: string; // Permitir atualização do ID da inbox
 }
 
 // Resposta da API ou hook para buscar funções de um inbox (como estava no admin)

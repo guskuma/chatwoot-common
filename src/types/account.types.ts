@@ -36,6 +36,7 @@ export interface UpdateAccountData {
   // email não está aqui pois não pode ser editado
   description?: string;
   openaiKey?: string; // Permitir atualização da chave OpenAI
+  id?: string; // Permitir atualização do ID da conta
   // owners?: string[]; // A atualização de owners pode ser uma operação separada
 }
 

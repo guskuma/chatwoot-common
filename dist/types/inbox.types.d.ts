@@ -69,6 +69,7 @@ export interface UpdateInboxData {
     configuredFunctions?: ConfiguredFunction[];
     model?: string;
     reasoning?: 'low' | 'medium' | 'high';
+    id?: string;
 }
 export interface InboxFunctionsResponse {
     configured: FunctionTool[];
