@@ -14,17 +14,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// This file will export all common types and interfaces. 
-__exportStar(require("./types/common.types"), exports);
-__exportStar(require("./types/account.types"), exports);
-__exportStar(require("./types/chatwoot-platform.types"), exports);
-__exportStar(require("./types/inbox.types"), exports);
-__exportStar(require("./types/user.types"), exports);
-__exportStar(require("./types/conversation.types"), exports);
-__exportStar(require("./types/message.types"), exports);
-__exportStar(require("./types/custom-agent.types"), exports);
-__exportStar(require("./types/tool.types"), exports);
-// Utilities
-__exportStar(require("./utils/name-generator"), exports);
-// Constants
-__exportStar(require("./constants"), exports);
+__exportStar(require("./predefined-functions"), exports);

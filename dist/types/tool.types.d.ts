@@ -5,4 +5,8 @@ export interface SelectableTool {
     parameters?: any;
     toolType: 'predefined' | 'custom' | 'mcp';
     category?: string;
+    strict?: boolean;
+}
+export interface ConfigurableParameters {
+    [key: string]: any;
 }

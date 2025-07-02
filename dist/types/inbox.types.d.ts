@@ -1,8 +1,5 @@
 import { DateLike } from './common.types';
-import { FunctionTool } from 'openai/resources/responses/responses';
-export interface ConfigurableParameters {
-    [parameterName: string]: any;
-}
+import { SelectableTool, ConfigurableParameters } from './tool.types';
 export interface ModelInfo {
     id: string;
     name: string;
@@ -29,7 +26,7 @@ export interface Inbox {
     initialPrompt: string;
     active?: boolean;
     processGroupMessages: boolean;
-    functions?: string[];
+    functions?: ConfiguredFunction[];
     configuredFunctions?: ConfiguredFunction[];
     agentName: string;
     agentAccessToken: string;
@@ -38,9 +35,7 @@ export interface Inbox {
     createdAt: DateLike;
     updatedAt: DateLike;
 }
-export interface FunctionToolDisplay extends FunctionTool {
-    displayName: string;
-    category?: string;
+export interface FunctionToolDisplay extends SelectableTool {
 }
 export interface CreateInboxData {
     accountId: string;
@@ -52,8 +47,9 @@ export interface CreateInboxData {
     processGroupMessages: boolean;
     agentName: string;
     agentAccessToken: string;
-    functions?: string[];
+    functions?: ConfiguredFunction[];
     configuredFunctions?: ConfiguredFunction[];
+    configuredParameters?: Record<string, ConfigurableParameters>;
     model?: string;
     reasoning?: 'low' | 'medium' | 'high';
 }
@@ -65,18 +61,27 @@ export interface UpdateInboxData {
     processGroupMessages?: boolean;
     agentName?: string;
     agentAccessToken?: string;
-    functions?: string[];
+    functions?: ConfiguredFunction[];
     configuredFunctions?: ConfiguredFunction[];
+    configuredParameters?: Record<string, ConfigurableParameters>;
     model?: string;
     reasoning?: 'low' | 'medium' | 'high';
     id?: string;
 }
 export interface InboxFunctionsResponse {
-    configured: FunctionTool[];
-    available: FunctionTool[];
+    configured: SelectableTool[];
+    available: SelectableTool[];
     summary: {
         configured_count: number;
         available_count: number;
         configured_names: string[];
     };
+}
+export interface AvailableModelsResponse {
+    success: boolean;
+    data: ModelInfo[];
+}
+export interface ModelDetailsResponse {
+    success: boolean;
+    data: ModelInfo;
 }

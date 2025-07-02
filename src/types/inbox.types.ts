@@ -1,10 +1,5 @@
 import { DateLike } from './common.types';
-import { FunctionTool } from 'openai/resources/responses/responses';
-
-// Nova interface para parâmetros configuráveis
-export interface ConfigurableParameters {
-  [parameterName: string]: any;
-}
+import { SelectableTool, ConfigurableParameters } from './tool.types';
 
 // Model information for GPT models
 export interface ModelInfo {
@@ -37,8 +32,8 @@ export interface Inbox {
   initialPrompt: string;
   active?: boolean; // No backend, 'active' é boolean, mas no admin pode ser opcional ao buscar/atualizar parcialmente.
   processGroupMessages: boolean; // Indica se o agente deve processar mensagens de grupos do WhatsApp
-  functions?: string[]; // Array de nomes/IDs das funções configuradas - DEPRECATED, usar configuredFunctions
-  configuredFunctions?: ConfiguredFunction[]; // Nova estrutura para funções configuradas
+  functions?: ConfiguredFunction[]; // Array de funções configuradas
+  configuredFunctions?: ConfiguredFunction[]; // Nova estrutura
   agentName: string;
   agentAccessToken: string;
   model?: string; // Modelo GPT a ser utilizado (gpt-4o-mini, gpt-4o, etc.)
@@ -47,10 +42,9 @@ export interface Inbox {
   updatedAt: DateLike;
 }
 
-// Extensão da FunctionTool da OpenAI para incluir displayName e category
-export interface FunctionToolDisplay extends FunctionTool {
-  displayName: string;
-  category?: string;
+// Extensão da SelectableTool para incluir campos adicionais se necessário
+export interface FunctionToolDisplay extends SelectableTool {
+  // Já inclui displayName e category
 }
 
 // Data Transfer Objects (DTOs)
@@ -64,8 +58,9 @@ export interface CreateInboxData {
   processGroupMessages: boolean; // Indica se deve processar mensagens de grupos
   agentName: string;
   agentAccessToken: string;
-  functions?: string[]; // DEPRECATED
+  functions?: ConfiguredFunction[]; // Array de funções configuradas
   configuredFunctions?: ConfiguredFunction[]; // Nova estrutura
+  configuredParameters?: Record<string, ConfigurableParameters>; // Parâmetros configurados por função
   model?: string; // Modelo GPT a ser utilizado
   reasoning?: 'low' | 'medium' | 'high';
 }
@@ -79,8 +74,9 @@ export interface UpdateInboxData {
   processGroupMessages?: boolean; // Permite atualizar a configuração de grupos
   agentName?: string;
   agentAccessToken?: string;
-  functions?: string[]; // Permite atualizar a lista de funções - DEPRECATED
+  functions?: ConfiguredFunction[]; // Array de funções configuradas
   configuredFunctions?: ConfiguredFunction[]; // Nova estrutura
+  configuredParameters?: Record<string, ConfigurableParameters>; // Parâmetros configurados por função
   model?: string; // Permite atualizar o modelo GPT utilizado
   reasoning?: 'low' | 'medium' | 'high';
   id?: string; // Permitir atualização do ID da inbox
@@ -88,11 +84,22 @@ export interface UpdateInboxData {
 
 // Resposta da API ou hook para buscar funções de um inbox (como estava no admin)
 export interface InboxFunctionsResponse {
-  configured: FunctionTool[];
-  available: FunctionTool[]; // Estas seriam todas as funções possíveis no sistema
+  configured: SelectableTool[];
+  available: SelectableTool[]; // Estas seriam todas as funções possíveis no sistema
   summary: {
     configured_count: number;
     available_count: number;
     configured_names: string[];
   };
+}
+
+// Respostas da API para modelos
+export interface AvailableModelsResponse {
+  success: boolean;
+  data: ModelInfo[];
+}
+
+export interface ModelDetailsResponse {
+  success: boolean;
+  data: ModelInfo;
 } 
