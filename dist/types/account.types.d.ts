@@ -6,6 +6,7 @@ export interface Account {
     email: string;
     description?: string;
     openaiKey?: string;
+    adminApiKey?: string;
     pwd?: string;
     createdAt: DateLike;
     updatedAt: DateLike;
@@ -28,6 +29,7 @@ export interface UpdateAccountData {
     displayName?: string;
     description?: string;
     openaiKey?: string;
+    adminApiKey?: string;
     id?: string;
 }
 export interface AddOwnerData {

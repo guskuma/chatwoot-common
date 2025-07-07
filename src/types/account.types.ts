@@ -7,6 +7,7 @@ export interface Account {
   email: string; // Email da conta (não editável após criação)
   description?: string;
   openaiKey?: string; // Chave OpenAI específica desta conta
+  adminApiKey?: string; // Chave administrativa do Chatwoot para operações de contatos/conversas
   pwd?: string; // Senha do usuário administrador
   createdAt: DateLike;
   updatedAt: DateLike;
@@ -36,6 +37,7 @@ export interface UpdateAccountData {
   // email não está aqui pois não pode ser editado
   description?: string;
   openaiKey?: string; // Permitir atualização da chave OpenAI
+  adminApiKey?: string; // Permitir atualização da chave administrativa
   id?: string; // Permitir atualização do ID da conta
   // owners?: string[]; // A atualização de owners pode ser uma operação separada
 }

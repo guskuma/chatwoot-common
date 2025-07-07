@@ -159,7 +159,7 @@ export const CHATWOOT_FUNCTIONS: SelectableTool[] = [
   {
     name: 'send_message',
     displayName: 'Responder mensagem',
-    description: 'Responde ao cliente com uma mensagem de texto',
+    description: 'Responde com uma mensagem de texto. Se for uma conversa de grupo, a mensagem será enviada para o grupo.',
     category: 'Chatwoot',
     toolType: 'predefined',
     strict: true,
@@ -253,8 +253,8 @@ export const CHATWOOT_FUNCTIONS: SelectableTool[] = [
   },
   {
     name: 'send_message_to',
-    displayName: 'Enviar mensagem para um número de telefone',
-    description: 'Envia uma mensagem para um número de telefone específico.',
+    displayName: 'Enviar mensagem privada para um número de telefone',
+    description: 'Envia uma mensagem privada para um número de telefone específico.',
     category: 'Chatwoot',
     toolType: 'predefined',
     strict: true,
