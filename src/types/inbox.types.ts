@@ -40,6 +40,7 @@ export interface Inbox {
   reasoning: 'low' | 'medium' | 'high'; // Esforço de raciocínio
   createdAt: DateLike;
   updatedAt: DateLike;
+  replyDirectly?: boolean; // Se a resposta deve ser enviada diretamente
 }
 
 // Extensão da SelectableTool para incluir campos adicionais se necessário
@@ -63,6 +64,7 @@ export interface CreateInboxData {
   configuredParameters?: Record<string, ConfigurableParameters>; // Parâmetros configurados por função
   model?: string; // Modelo GPT a ser utilizado
   reasoning?: 'low' | 'medium' | 'high';
+  replyDirectly: boolean; // Controle de envio de resposta
 }
 
 export interface UpdateInboxData {
@@ -79,6 +81,7 @@ export interface UpdateInboxData {
   configuredParameters?: Record<string, ConfigurableParameters>; // Parâmetros configurados por função
   model?: string; // Permite atualizar o modelo GPT utilizado
   reasoning?: 'low' | 'medium' | 'high';
+  replyDirectly?: boolean; // Controle de envio de resposta
   id?: string; // Permitir atualização do ID da inbox
 }
 

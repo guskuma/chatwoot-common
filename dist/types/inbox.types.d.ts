@@ -32,6 +32,7 @@ export interface Inbox {
     agentAccessToken: string;
     model?: string;
     reasoning: 'low' | 'medium' | 'high';
+    replyDirectly: boolean;
     createdAt: DateLike;
     updatedAt: DateLike;
 }
@@ -52,6 +53,7 @@ export interface CreateInboxData {
     configuredParameters?: Record<string, ConfigurableParameters>;
     model?: string;
     reasoning?: 'low' | 'medium' | 'high';
+    replyDirectly?: boolean;
 }
 export interface UpdateInboxData {
     name?: string;
@@ -66,6 +68,7 @@ export interface UpdateInboxData {
     configuredParameters?: Record<string, ConfigurableParameters>;
     model?: string;
     reasoning?: 'low' | 'medium' | 'high';
+    replyDirectly?: boolean;
     id?: string;
 }
 export interface InboxFunctionsResponse {
