@@ -161,7 +161,7 @@ exports.CHATWOOT_FUNCTIONS = [
     {
         name: 'send_message',
         displayName: 'Responder mensagem',
-        description: 'Responde com uma mensagem de texto. Se for uma conversa de grupo, a mensagem será enviada para o grupo.',
+        description: 'Responde ao usuário com uma mensagem de texto. Se for uma conversa de grupo, a mensagem será enviada para o grupo.',
         category: 'Chatwoot',
         toolType: 'predefined',
         strict: true,
@@ -275,12 +275,12 @@ exports.CHATWOOT_FUNCTIONS = [
                     type: 'string',
                     description: 'Nome do contato. Use string vazia ("") se não quiser definir nome.',
                 },
-                isPrivateNote: {
+                isNote: {
                     type: 'boolean',
-                    description: 'Se true, envia como nota privada visível apenas para agentes (padrão: false)',
+                    description: 'Se true, envia como nota visível apenas para agentes (padrão: false)',
                 },
             },
-            required: ['phoneNumber', 'message', 'contactName', 'isPrivateNote'],
+            required: ['phoneNumber', 'message', 'contactName', 'isNote'],
             additionalProperties: false,
         },
     },

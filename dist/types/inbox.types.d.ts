@@ -32,9 +32,12 @@ export interface Inbox {
     agentAccessToken: string;
     model?: string;
     reasoning: 'low' | 'medium' | 'high';
-    replyDirectly: boolean;
     createdAt: DateLike;
     updatedAt: DateLike;
+    replyDirectly?: boolean;
+    routingMode?: 'direct' | 'router';
+    individualMessagesInboxId?: string;
+    groupMessagesInboxId?: string;
 }
 export interface FunctionToolDisplay extends SelectableTool {
 }
@@ -53,7 +56,10 @@ export interface CreateInboxData {
     configuredParameters?: Record<string, ConfigurableParameters>;
     model?: string;
     reasoning?: 'low' | 'medium' | 'high';
-    replyDirectly?: boolean;
+    replyDirectly: boolean;
+    routingMode?: 'direct' | 'router';
+    individualMessagesInboxId?: string;
+    groupMessagesInboxId?: string;
 }
 export interface UpdateInboxData {
     name?: string;
@@ -70,6 +76,9 @@ export interface UpdateInboxData {
     reasoning?: 'low' | 'medium' | 'high';
     replyDirectly?: boolean;
     id?: string;
+    routingMode?: 'direct' | 'router';
+    individualMessagesInboxId?: string;
+    groupMessagesInboxId?: string;
 }
 export interface InboxFunctionsResponse {
     configured: SelectableTool[];

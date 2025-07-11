@@ -41,6 +41,11 @@ export interface Inbox {
   createdAt: DateLike;
   updatedAt: DateLike;
   replyDirectly?: boolean; // Se a resposta deve ser enviada diretamente
+
+  // Campos para roteamento de mensagens
+  routingMode?: 'direct' | 'router'; // 'direct' = processa diretamente, 'router' = roteia
+  individualMessagesInboxId?: string; // ID da inbox de destino para mensagens individuais
+  groupMessagesInboxId?: string; // ID da inbox de destino para mensagens de grupo
 }
 
 // Extensão da SelectableTool para incluir campos adicionais se necessário
@@ -65,6 +70,9 @@ export interface CreateInboxData {
   model?: string; // Modelo GPT a ser utilizado
   reasoning?: 'low' | 'medium' | 'high';
   replyDirectly: boolean; // Controle de envio de resposta
+  routingMode?: 'direct' | 'router';
+  individualMessagesInboxId?: string;
+  groupMessagesInboxId?: string;
 }
 
 export interface UpdateInboxData {
@@ -83,6 +91,9 @@ export interface UpdateInboxData {
   reasoning?: 'low' | 'medium' | 'high';
   replyDirectly?: boolean; // Controle de envio de resposta
   id?: string; // Permitir atualização do ID da inbox
+  routingMode?: 'direct' | 'router';
+  individualMessagesInboxId?: string;
+  groupMessagesInboxId?: string;
 }
 
 // Resposta da API ou hook para buscar funções de um inbox (como estava no admin)
