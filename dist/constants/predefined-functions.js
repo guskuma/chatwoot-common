@@ -293,7 +293,7 @@ exports.WEBHOOK_FUNCTIONS = [
         description: 'Executa uma chamada HTTP configurável para qualquer URL externa',
         category: 'Webhooks',
         toolType: 'predefined',
-        strict: true,
+        strict: false,
         parameters: {
             type: 'object',
             properties: {
