@@ -284,11 +284,69 @@ export const CHATWOOT_FUNCTIONS: SelectableTool[] = [
   },
 ];
 
+// Funções de webhook HTTP
+export const WEBHOOK_FUNCTIONS: SelectableTool[] = [
+  {
+    name: 'http_webhook',
+    displayName: 'Chamada HTTP (Webhook)',
+    description: 'Executa uma chamada HTTP configurável para qualquer URL externa',
+    category: 'Webhooks',
+    toolType: 'predefined',
+    strict: false,
+    parameters: {
+      type: 'object',
+      properties: {
+        method: {
+          type: 'string',
+          enum: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS'],
+          description: 'Método HTTP a ser utilizado'
+        },
+        url: {
+          type: 'string',
+          description: 'URL completa do webhook (incluindo protocolo)'
+        },
+        headers: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              field: { 
+                type: 'string',
+                description: 'Nome do cabeçalho HTTP'
+              },
+              value: { 
+                type: 'string',
+                description: 'Valor do cabeçalho HTTP'
+              }
+            },
+            required: ['field', 'value'],
+            additionalProperties: false
+          },
+          description: 'Cabeçalhos HTTP opcionais'
+        },
+        body: {
+          type: 'string',
+          description: 'Corpo da requisição (para métodos POST, PUT, PATCH)'
+        },
+        timeout: {
+          type: 'integer',
+          description: 'Timeout em segundos (padrão: 30)',
+          minimum: 1,
+          maximum: 300
+        }
+      },
+      required: ['method', 'url'],
+      additionalProperties: false
+    }
+  }
+];
+
 // Array consolidado de todas as funções pré-definidas
 export const PREDEFINED_FUNCTIONS: SelectableTool[] = [
   ...DATE_TIME_FUNCTIONS,
   ...CHATWOOT_FUNCTIONS,
   ...CALENDAR_FUNCTIONS,
+  ...WEBHOOK_FUNCTIONS,
 ];
 
 // Função helper para buscar função por nome
