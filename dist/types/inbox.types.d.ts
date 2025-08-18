@@ -26,6 +26,7 @@ export interface Inbox {
     initialPrompt: string;
     active?: boolean;
     processGroupMessages: boolean;
+    ignorePreviousMessages?: boolean;
     functions?: ConfiguredFunction[];
     configuredFunctions?: ConfiguredFunction[];
     agentName: string;
@@ -49,6 +50,7 @@ export interface CreateInboxData {
     initialPrompt: string;
     active: boolean;
     processGroupMessages: boolean;
+    ignorePreviousMessages?: boolean;
     agentName: string;
     agentAccessToken: string;
     functions?: ConfiguredFunction[];
@@ -67,6 +69,7 @@ export interface UpdateInboxData {
     initialPrompt?: string;
     active?: boolean;
     processGroupMessages?: boolean;
+    ignorePreviousMessages?: boolean;
     agentName?: string;
     agentAccessToken?: string;
     functions?: ConfiguredFunction[];
